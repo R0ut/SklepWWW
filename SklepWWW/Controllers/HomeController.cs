@@ -11,6 +11,7 @@ namespace SklepWWW.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            //logowanie
             return View();
         }
     }
