@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SklepWWW.DAL;
+using SklepWWW.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,17 @@ namespace SklepWWW.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        private KursyContext db = new KursyContext();
+
         public ActionResult Index()
         {
-            //logowanie
+            
+             Kategoria kategoria = new Kategoria { NazwaKategorii = "asp.net mvc", NazwaPlikuIkony = "aspNetMvc.png", OpisKategorii = "opis" };
+             db.Kategorie.Add(kategoria);
+             db.SaveChanges();
+          
+            
+
             return View();
         }
     }
