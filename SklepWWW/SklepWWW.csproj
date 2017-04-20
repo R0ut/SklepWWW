@@ -118,6 +118,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704201700224_InitialCreate.cs" />
+    <Compile Include="Migrations\201704201700224_InitialCreate.Designer.cs">
+      <DependentUpon>201704201700224_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704201715091_dodaniePolaOpisSkrocony.cs" />
+    <Compile Include="Migrations\201704201715091_dodaniePolaOpisSkrocony.Designer.cs">
+      <DependentUpon>201704201715091_dodaniePolaOpisSkrocony.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704201806199_dodaniePolaTest.cs" />
+    <Compile Include="Migrations\201704201806199_dodaniePolaTest.Designer.cs">
+      <DependentUpon>201704201806199_dodaniePolaTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704201808050_usunieciePolaTest.cs" />
+    <Compile Include="Migrations\201704201808050_usunieciePolaTest.Designer.cs">
+      <DependentUpon>201704201808050_usunieciePolaTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Kategoria.cs" />
     <Compile Include="Models\Kurs.cs" />
     <Compile Include="Models\PozycjaZamowienia.cs" />
@@ -143,6 +160,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704201700224_InitialCreate.resx">
+      <DependentUpon>201704201700224_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201715091_dodaniePolaOpisSkrocony.resx">
+      <DependentUpon>201704201715091_dodaniePolaOpisSkrocony.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201806199_dodaniePolaTest.resx">
+      <DependentUpon>201704201806199_dodaniePolaTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201808050_usunieciePolaTest.resx">
+      <DependentUpon>201704201808050_usunieciePolaTest.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

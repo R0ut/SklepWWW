@@ -5,18 +5,20 @@ using System.Web;
 using System.Data.Entity;
 using SklepWWW.Models;
 using SklepWWW.DAL;
+using SklepWWW.Migrations;
+using System.Data.Entity.Migrations;
 
 namespace SklepWWW.DAL
 {
-    public class KursyInitializer : DropCreateDatabaseAlways<KursyContext>
+    public class KursyInitializer : MigrateDatabaseToLatestVersion<KursyContext,Configuration>
     {
-        protected override void Seed(KursyContext context)
-        {
-            SeedKursyData(context);
-            base.Seed(context);
-        }
+        //protected override void Seed(KursyContext context)
+        //{
+        //    SeedKursyData(context);
+        //    base.Seed(context);
+        //}
 
-        private void SeedKursyData(KursyContext context)
+        public static void SeedKursyData(KursyContext context)
         {
             var kategorie = new List<Kategoria>
            {
@@ -29,7 +31,7 @@ namespace SklepWWW.DAL
                new Kategoria() {KategoriaId = 7,NazwaKategorii = "c#", NazwaPlikuIkony="c#.png",OpisKategorii = "Opis c#" },
             };
 
-            kategorie.ForEach(k => context.Kategorie.Add(k));
+            kategorie.ForEach(k => context.Kategorie.AddOrUpdate(k));
             context.SaveChanges();
 
 
@@ -46,7 +48,7 @@ namespace SklepWWW.DAL
              DataDodania = DateTime.Now, OpisKursu = "opis kursu mvc 5" },
          };
 
-            kursy.ForEach(k => context.Kursy.Add(k));
+            kursy.ForEach(k => context.Kursy.AddOrUpdate(k));
             context.SaveChanges();
          }
     }

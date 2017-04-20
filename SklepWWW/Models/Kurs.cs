@@ -23,6 +23,7 @@ namespace SklepWWW.Models
         public decimal CenaKursu { get; set; }
         public bool Bestseller { get; set; }
         public bool Ukryty { get; set; }
+        public string OpisSkrocony { get; set; }
         
 
 
