@@ -16,7 +16,9 @@ namespace SklepWWW.Migrations
 
         protected override void Seed(SklepWWW.DAL.KursyContext context)
         {
-            KursyInitializer.SeedKursyData(context);
+           // KursyInitializer.SeedKursyData(context); // to tutaj napisywalo baze danych inicjalizatorem
+
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

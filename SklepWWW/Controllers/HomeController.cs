@@ -1,5 +1,6 @@
 ﻿using SklepWWW.DAL;
 using SklepWWW.Models;
+using SklepWWW.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,18 @@ namespace SklepWWW.Controllers
 
         public ActionResult Index()
         {
-            var listaKategorii = db.Kategorie.ToList();            
+            var kategorie = db.Kategorie.ToList();
+            var nowosci = db.Kursy.Where(x => !x.Ukryty).OrderByDescending(x => x.DataDodania).Take(3).ToList();
+            var bestseller = db.Kursy.Where(x => !x.Ukryty && x.Bestseller).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
 
-            return View();
+            var vm = new HomeViewModel()
+            {
+                Kategorie = kategorie,
+                Nowosci = nowosci,
+                Bestsellery = bestseller
+            };
+
+            return View(vm);
         }
 
         public ActionResult StronyStatyczne(string nazwa)

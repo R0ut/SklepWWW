@@ -17,7 +17,7 @@ namespace SklepWWW.DAL
 
         static KursyContext()
         {
-            Database.SetInitializer<KursyContext>(new KursyInitializer());
+            //Database.SetInitializer<KursyContext>(new KursyInitializer());
         }
 
         public DbSet<Kurs> Kursy { get; set; }
