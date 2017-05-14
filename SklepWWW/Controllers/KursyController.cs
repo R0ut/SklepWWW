@@ -24,7 +24,9 @@ namespace SklepWWW.Controllers
         }
         public ActionResult Szczegoly(string id)
         {
-            return View();
+            
+            var kurs = db.Kursy.Find(Convert.ToInt16(id));
+            return View(kurs);
         }
 
         [ChildActionOnly]
