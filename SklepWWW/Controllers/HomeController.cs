@@ -33,5 +33,7 @@ namespace SklepWWW.Controllers
         {
             return View(nazwa);
         }
+
+        
     }
 }
