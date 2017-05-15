@@ -30,6 +30,7 @@ namespace SklepWWW.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60000)] // odpytamy baze tylko raz a potem bedzie brane z cache(odciarzenie bazy danych).Cache bedzie trzymał dane przez jeden dzien(60000)
         public ActionResult KategorieMenu()
         {
             var kategorie = db.Kategorie.ToList();
