@@ -7,6 +7,10 @@
     <mvcSiteMapNode title="Kategorie" controller="Kursy" action="Lista" dynamicNodeProvider="SklepWWW.Infrastructure.KategorieDynamicNodeProvider, SklepWWW">
       <mvcSiteMapNode title="Kurs" controller="Kursy" action="Szczegoly" dynamicNodeProvider="SklepWWW.Infrastructure.KursySzczegolyDynamicNodeProvider, SklepWWW" />
     </mvcSiteMapNode>
+    <mvcSiteMapNode title="Koszyk" controller="Koszyk" action="Index">
+      <mvcSiteMapNode title="Dane zamowienia" controller="Koszyk" action="Zaplac"/>
+      <mvcSiteMapNode title="Potwierdzenie zamowienia" controller="Koszyk" action="PotwierzZamowienie"/>
+    </mvcSiteMapNode>
   </mvcSiteMapNode>
 
 </mvcSiteMap>
