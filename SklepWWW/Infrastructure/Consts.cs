@@ -10,5 +10,6 @@ namespace SklepWWW.Infrastructure
         public const string NowosciCasheKey = "NowosciCasheKey";
         public const string BestsellerCasheKey = "BestsellerCasheKey";
         public const string KategorieCasheKey = "KategorieCasheKey";
+        public const string KoszykSessionKey = "KoszykSessionKey";
     }
 }

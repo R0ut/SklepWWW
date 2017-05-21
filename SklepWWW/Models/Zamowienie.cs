@@ -33,7 +33,7 @@ namespace SklepWWW.Models
         
 
 
-       List<PozycjaZamowienia> PozycjaZamowienia { get; set; }
+       public List<PozycjaZamowienia> PozycjaZamowienia { get; set; }
 
     }
 
