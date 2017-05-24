@@ -325,6 +325,10 @@
     <Compile Include="Migrations\201705241807556_tee.Designer.cs">
       <DependentUpon>201705241807556_tee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705241925136_Zamowienia.cs" />
+    <Compile Include="Migrations\201705241925136_Zamowienia.Designer.cs">
+      <DependentUpon>201705241925136_Zamowienia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DaneUzytkownika.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -375,6 +379,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Koszyk\Zaplac.cshtml" />
+    <Content Include="Views\Koszyk\PotwierdzenieZamowienia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -406,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705241807556_tee.resx">
       <DependentUpon>201705241807556_tee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705241925136_Zamowienia.resx">
+      <DependentUpon>201705241925136_Zamowienia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
