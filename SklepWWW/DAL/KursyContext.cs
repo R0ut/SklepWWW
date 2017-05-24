@@ -1,4 +1,5 @@
-﻿using SklepWWW.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using SklepWWW.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Web;
 
 namespace SklepWWW.DAL
 {
-    public class KursyContext : DbContext
+    public class KursyContext : IdentityDbContext<ApplicationUser>
     {
         public KursyContext() : base("KursyContext")
         {
@@ -17,7 +18,12 @@ namespace SklepWWW.DAL
 
         static KursyContext()
         {
-            //Database.SetInitializer<KursyContext>(new KursyInitializer());
+            Database.SetInitializer<KursyContext>(new KursyInitializer());
+        }
+
+        public static KursyContext Create()
+        {
+            return new KursyContext();
         }
 
         public DbSet<Kurs> Kursy { get; set; }
