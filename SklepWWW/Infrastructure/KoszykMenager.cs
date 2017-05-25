@@ -102,9 +102,9 @@ namespace SklepWWW.Infrastructure
             noweZamowienie.UserId = userId;
             db.Zamowienia.Add(noweZamowienie);
         
-            if(noweZamowienie.PozycjaZamowienia == null)
+            if(noweZamowienie.PozycjeZamowienia == null)
             {
-                noweZamowienie.PozycjaZamowienia = new List<PozycjaZamowienia>();
+                noweZamowienie.PozycjeZamowienia = new List<PozycjaZamowienia>();
             }
             decimal koszykWartosc = 0;
 
@@ -118,7 +118,7 @@ namespace SklepWWW.Infrastructure
                 };
 
                 koszykWartosc += (koszykElement.Ilosc * koszykElement.Kurs.CenaKursu);
-                noweZamowienie.PozycjaZamowienia.Add(nowaPozycjaZamowienia);
+                noweZamowienie.PozycjeZamowienia.Add(nowaPozycjaZamowienia);
             }
 
             noweZamowienie.WartoscZamowienia = koszykWartosc;

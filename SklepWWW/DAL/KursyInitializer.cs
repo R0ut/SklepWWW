@@ -7,6 +7,8 @@ using SklepWWW.Models;
 using SklepWWW.DAL;
 using SklepWWW.Migrations;
 using System.Data.Entity.Migrations;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SklepWWW.DAL
 {
@@ -56,6 +58,38 @@ namespace SklepWWW.DAL
             kursy.ForEach(k => context.Kursy.AddOrUpdate(k));
             context.SaveChanges();
 
+        }
+
+        public static void SeedUzytkownicy(KursyContext db)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            const string name = "admin@wp.pl";
+            const string password = "P@ssw0rd";
+            const string roleName = "Admin";
+
+            var user = userManager.FindByName(name);
+            if (user == null)
+            {
+                user = new ApplicationUser { UserName = name, Email = name, DaneUzytkownika = new DaneUzytkownika() };
+                var result = userManager.Create(user, password);
+            }
+
+            // utworzenie roli Admin jeśli nie istnieje 
+            var role = roleManager.FindByName(roleName);
+            if (role == null)
+            {
+                role = new IdentityRole(roleName);
+                var roleresult = roleManager.Create(role);
+            }
+
+            // dodanie uzytkownika do roli Admin jesli juz nie jest w roli
+            var rolesForUser = userManager.GetRoles(user.Id);
+            if (!rolesForUser.Contains(role.Name))
+            {
+                var result = userManager.AddToRole(user.Id, role.Name);
+            }
         }
     }
 }

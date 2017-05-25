@@ -37,10 +37,10 @@ namespace SklepWWW.Models
         public DateTime DataDodania { get; set; }
         public StanZamowienia StanZamowienia { get; set; }
         public decimal WartoscZamowienia { get; set; }
-        
 
 
-       public List<PozycjaZamowienia> PozycjaZamowienia { get; set; }
+
+        public List<PozycjaZamowienia> PozycjeZamowienia { get; set; }
 
     }
 

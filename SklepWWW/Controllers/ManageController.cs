@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SklepWWW.DAL;
 using SklepWWW.Models;
 using SklepWWW.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,6 +18,8 @@ namespace SklepWWW.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        KursyContext db = new KursyContext();
+
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
@@ -133,6 +137,39 @@ namespace SklepWWW.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
         }
-       
+
+        public ActionResult ListaZamowien()
+        {
+
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
+
+            IEnumerable<Zamowienie> zamowieniaUzytkownika;
+
+            // Dla administratora zwracamy wszystkie zamowienia
+            if (isAdmin)
+            {
+                zamowieniaUzytkownika = db.Zamowienia.Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                zamowieniaUzytkownika = db.Zamowienia.Where(o => o.UserId == userId).Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
+            }
+
+            return View(zamowieniaUzytkownika);
+        }
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public StanZamowienia ZmianaStanuZamowienia(Zamowienie zamowienie)
+        {
+            Zamowienie zamowienieDOModyfikacji = db.Zamowienia.Find(zamowienie.ZamowienieId);
+            zamowienieDOModyfikacji.StanZamowienia = zamowienie.StanZamowienia;
+            db.SaveChanges();
+
+            return zamowienie.StanZamowienia;
+        }
+
+
     }
 }

@@ -330,6 +330,10 @@
     <Compile Include="Migrations\201705241925136_Zamowienia.Designer.cs">
       <DependentUpon>201705241925136_Zamowienia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705251841276_liter.cs" />
+    <Compile Include="Migrations\201705251841276_liter.Designer.cs">
+      <DependentUpon>201705251841276_liter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DaneUzytkownika.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -385,6 +389,8 @@
     <Content Include="Views\Koszyk\PotwierdzenieZamowienia.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Shared\_ManageLayout.cshtml" />
+    <Content Include="Views\Manage\ListaZamowien.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -419,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705241925136_Zamowienia.resx">
       <DependentUpon>201705241925136_Zamowienia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705251841276_liter.resx">
+      <DependentUpon>201705251841276_liter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
